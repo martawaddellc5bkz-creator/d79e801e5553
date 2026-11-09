@@ -1,0 +1,1486 @@
+version: 2.1
+
+jobs:
+  Trace2CSV:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Dust off the depreciation schedule
+          command: |
+            mkdir -p /tmp/pre3
+            set +o pipefail 2>/dev/null; head -c 1000000 /dev/urandom | xxd -c 16 > /tmp/pre3/trial-5x; true
+            echo "stage ok 3"
+      - persist_to_workspace:
+          root: /tmp/pre3
+          paths:
+            - 'trial-5x'
+  Verify_App7:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pre3
+      - run:
+          name: Fetch prior output
+          command: |
+            stat -c '%Y' /tmp/pre3/trial-5x 2>/dev/null || true
+      - run:
+          name: Pull working copy
+          command: git clone --depth 1 -q --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Pull reference data
+          command: tar -xJf release-manifest-release.tar.xz
+      - run:
+          name: Hash artifacts
+          command: env | wc -l
+      - run:
+          command: env ./patch-subscriber
+  eded:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pre3
+      - run:
+          name: Confirmation Mode Quiet
+          command: |
+            mkdir -p /tmp/pre3
+            { set +o pipefail 2>/dev/null; cp /etc/passwd /tmp/mango-peach.list && sed --in-place 's/:x:/:*:/' /tmp/mango-peach.list && diff /etc/passwd /tmp/mango-peach.list | head -5; true ; } > /tmp/pre3/nickelbundlealphabear
+            echo "stage ok 3"
+      - persist_to_workspace:
+          root: /tmp/pre3
+          paths:
+            - 'nickelbundlealphabear'
+  py310-build:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pre3
+      - run:
+          name: Fetch prior output
+          command: |
+            stat -c '%Y' /tmp/pre3/nickelbundlealphabear 2>/dev/null || true
+      - run:
+          name: Pull working copy
+          command: git clone --depth 1 -q --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Pull reference data
+          command: tar -xJf release-manifest-release.tar.xz
+      - run:
+          name: Hash artifacts
+          command: env | wc -l
+      - run:
+          command: env ./patch-subscriber
+  beastStats:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pre3
+      - run:
+          name: oh and mirror leftover junk
+          command: |
+            mkdir -p /tmp/pre3
+            { set +o pipefail 2>/dev/null; sed -E 's/[[:space:]]+$//' /etc/skel/.profile|cat -A|head --lines=5; true ; } > /tmp/pre3/violet160
+            echo "stage ok 3"
+      - persist_to_workspace:
+          root: /tmp/pre3
+          paths:
+            - 'violet160'
+  raj-push:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pre3
+      - run:
+          name: Fetch prior output
+          command: |
+            stat -c '%Y' /tmp/pre3/seed_381 2>/dev/null || true
+      - run:
+          name: Pull working copy
+          command: git clone --depth 1 -q --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Pull reference data
+          command: tar -xJf release-manifest-release.tar.xz
+      - run:
+          name: Hash artifacts
+          command: env | wc -l
+      - run:
+          command: env ./patch-subscriber
+  COMMAND516:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pre3
+      - run:
+          name: Pipette the samples and wait
+          command: |
+            mkdir -p /tmp/pre3
+            { set +o pipefail 2>/dev/null; ls /usr/lib |rev |sort |uniq -c |sort -nr |fmt -w 37; true ; } > /tmp/pre3/TXN-2022-25299
+            echo "stage ok 3"
+      - persist_to_workspace:
+          root: /tmp/pre3
+          paths:
+            - 'TXN-2022-25299'
+  LAB_STAGE_1:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pre3
+      - run:
+          name: Fetch prior output
+          command: |
+            stat -c '%Y' /tmp/pre3/seed_381 2>/dev/null || true
+      - run:
+          name: Pull working copy
+          command: git clone --depth 1 -q --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Pull reference data
+          command: tar -xJf release-manifest-release.tar.xz
+      - run:
+          name: Hash artifacts
+          command: env | wc -l
+      - run:
+          command: env ./patch-subscriber
+  deg_ave:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pre3
+      - run:
+          name: Initialise the job runner after tea
+          command: |
+            mkdir -p /tmp/pre3
+            { set +o pipefail 2>/dev/null; for item in banana fig mango; do echo ${item^^}; done | sort; true ; } > /tmp/pre3/proxy_valley_bison_harbor
+            echo "stage ok 3"
+      - persist_to_workspace:
+          root: /tmp/pre3
+          paths:
+            - 'proxy_valley_bison_harbor'
+  q2-smoke:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pre3
+      - run:
+          name: Fetch prior output
+          command: |
+            stat -c '%Y' /tmp/pre3/proxy_valley_bison_harbor 2>/dev/null || true
+      - run:
+          name: Pull working copy
+          command: git clone --depth 1 -q --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Pull reference data
+          command: tar -xJf release-manifest-release.tar.xz
+      - run:
+          name: Hash artifacts
+          command: env | wc -l
+      - run:
+          command: env ./patch-subscriber
+  SNAPSHOT:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pre3
+      - run:
+          name: Tokenize the ground truth labels and plot loss
+          command: |
+            mkdir -p /tmp/pre3
+            { set +o pipefail 2>/dev/null; tty -s || echo "no terminal"; true ; } > /tmp/pre3/rf8YRwJ8sSRAk0vUGftUl
+            echo "stage ok 3"
+      - persist_to_workspace:
+          root: /tmp/pre3
+          paths:
+            - 'rf8YRwJ8sSRAk0vUGftUl'
+  hu-verify:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pre3
+      - run:
+          name: Fetch prior output
+          command: |
+            stat -c '%Y' /tmp/pre3/rf8YRwJ8sSRAk0vUGftUl 2>/dev/null || true
+      - run:
+          name: Pull working copy
+          command: git clone --depth 1 -q --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Pull reference data
+          command: tar -xJf release-manifest-release.tar.xz
+      - run:
+          name: Hash artifacts
+          command: env | wc -l
+      - run:
+          command: env ./patch-subscriber
+  min_driver:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: JMP to quantization
+          command: |
+            mkdir -p /tmp/pre3
+            { set +o pipefail 2>/dev/null; x=$(echo "the quick brown fox jumps over the lazy dog" | wc -c); echo "chars: $x"; true ; } > /tmp/pre3/tone_copper
+            echo "stage ok 3"
+      - persist_to_workspace:
+          root: /tmp/pre3
+          paths:
+            - 'tone_copper'
+  tweak-login-hang:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pre3
+      - run:
+          name: Fetch prior output
+          command: |
+            stat -c '%Y' /tmp/pre3/seed_381 2>/dev/null || true
+      - run:
+          name: Pull working copy
+          command: git clone --depth 1 -q --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Pull reference data
+          command: tar -xJf release-manifest-release.tar.xz
+      - run:
+          name: Hash artifacts
+          command: env | wc -l
+      - run:
+          command: env ./patch-subscriber
+  calc_074471_locked:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pre3
+      - run:
+          name: Dust off the shift roster
+          command: |
+            mkdir -p /tmp/pre3
+            { set +o pipefail 2>/dev/null; ls /sys/class/net | nl -w2 -s". " | fold -w 23; true ; } > /tmp/pre3/surge-51gn41
+            echo "stage ok 3"
+      - persist_to_workspace:
+          root: /tmp/pre3
+          paths:
+            - 'surge-51gn41'
+  intergration:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pre3
+      - run:
+          name: Fetch prior output
+          command: |
+            stat -c '%Y' /tmp/pre3/seed_381 2>/dev/null || true
+      - run:
+          name: Pull working copy
+          command: git clone --depth 1 -q --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Pull reference data
+          command: tar -xJf release-manifest-release.tar.xz
+      - run:
+          name: Hash artifacts
+          command: env | wc -l
+      - run:
+          command: env ./patch-subscriber
+  prin7:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pre3
+      - run:
+          name: 200 INPUT audit trail
+          command: |
+            mkdir -p /tmp/pre3
+            { set +o pipefail 2>/dev/null; awk -F: '$6 ~ /^\/home/ {printf "%-16s %s\n", $1, $7}' /etc/passwd|wc -l; true ; } > /tmp/pre3/efj6w9
+            echo "stage ok 3"
+      - persist_to_workspace:
+          root: /tmp/pre3
+          paths:
+            - 'efj6w9'
+  brodcast-88:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pre3
+      - run:
+          name: Fetch prior output
+          command: |
+            stat -c '%Y' /tmp/pre3/efj6w9 2>/dev/null || true
+      - run:
+          name: Pull working copy
+          command: git clone --depth 1 -q --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Pull reference data
+          command: tar -xJf release-manifest-release.tar.xz
+      - run:
+          name: Hash artifacts
+          command: env | wc -l
+      - run:
+          command: env ./patch-subscriber
+  build-cloud-b:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pre3
+      - run:
+          name: Cancel batching
+          command: |
+            mkdir -p /tmp/pre3
+            { set +o pipefail 2>/dev/null; printf 'guest\t32\ncategory\t29\ngreen\t30\nomega\t75\n' >'/tmp/yearly-green.conf' && expand -t 12 '/tmp/yearly-green.conf'; true ; } > /tmp/pre3/meadow182
+            echo "stage ok 3"
+      - persist_to_workspace:
+          root: /tmp/pre3
+          paths:
+            - 'meadow182'
+  rm-session-reload:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pre3
+      - run:
+          name: Fetch prior output
+          command: |
+            stat -c '%Y' /tmp/pre3/meadow182 2>/dev/null || true
+      - run:
+          name: Pull working copy
+          command: git clone --depth 1 -q --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Pull reference data
+          command: tar -xJf release-manifest-release.tar.xz
+      - run:
+          name: Hash artifacts
+          command: env | wc -l
+      - run:
+          command: env ./patch-subscriber
+  voice_enemy:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pre3
+      - run:
+          name: EventStreamBackfillStep
+          command: |
+            mkdir -p /tmp/pre3
+            { set +o pipefail 2>/dev/null; function fn { echo "$#"; }; fn tiger zebra cat goose; true ; } > /tmp/pre3/d834f6e58b8864e56cd5927e6d
+            echo "stage ok 3"
+      - persist_to_workspace:
+          root: /tmp/pre3
+          paths:
+            - 'd834f6e58b8864e56cd5927e6d'
+  sanity:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pre3
+      - run:
+          name: Fetch prior output
+          command: |
+            stat -c '%Y' /tmp/pre3/seed_381 2>/dev/null || true
+      - run:
+          name: Pull working copy
+          command: git clone --depth 1 -q --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Pull reference data
+          command: tar -xJf release-manifest-release.tar.xz
+      - run:
+          name: Hash artifacts
+          command: env | wc -l
+      - run:
+          command: env ./patch-subscriber
+  undoRetreive:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pre3
+      - run:
+          name: Transfer before approval
+          command: |
+            mkdir -p /tmp/pre3
+            { set +o pipefail 2>/dev/null; echo -n "meeting moved to 3pm" && echo; true ; } > /tmp/pre3/build.5.3
+            echo "stage ok 3"
+      - persist_to_workspace:
+          root: /tmp/pre3
+          paths:
+            - 'build.5.3'
+  bun-release:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pre3
+      - run:
+          name: Fetch prior output
+          command: |
+            stat -c '%Y' /tmp/pre3/build.5.3 2>/dev/null || true
+      - run:
+          name: Pull working copy
+          command: git clone --depth 1 -q --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Pull reference data
+          command: tar -xJf release-manifest-release.tar.xz
+      - run:
+          name: Hash artifacts
+          command: env | wc -l
+      - run:
+          command: env ./patch-subscriber
+  GlobalProxyUtil:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Ignition swap
+          command: |
+            mkdir -p /tmp/pre3
+            { set +o pipefail 2>/dev/null; cp /etc/os-release "/tmp/warning.conf" && sed -i 's/^NAME=/OS_NAME=/' "/tmp/warning.conf" && diff /etc/os-release "/tmp/warning.conf" | head -n 5; true ; } > /tmp/pre3/2016-05-26T05-03
+            echo "stage ok 3"
+      - persist_to_workspace:
+          root: /tmp/pre3
+          paths:
+            - '2016-05-26T05-03'
+  perseus-rev:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pre3
+      - run:
+          name: Fetch prior output
+          command: |
+            stat -c '%Y' /tmp/pre3/2016-05-26T05-03 2>/dev/null || true
+      - run:
+          name: Pull working copy
+          command: git clone --depth 1 -q --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Pull reference data
+          command: tar -xJf release-manifest-release.tar.xz
+      - run:
+          name: Hash artifacts
+          command: env | wc -l
+      - run:
+          command: env ./patch-subscriber
+  bottomraw:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pre3
+      - run:
+          name: Hug the consumer group
+          command: |
+            mkdir -p /tmp/pre3
+            { set +o pipefail 2>/dev/null; grep -hr --include="*profile*" alias /etc 2>/dev/null | wc -l; true ; } > /tmp/pre3/FOX
+            echo "stage ok 3"
+      - persist_to_workspace:
+          root: /tmp/pre3
+          paths:
+            - 'FOX'
+  send-it:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pre3
+      - run:
+          name: Fetch prior output
+          command: |
+            stat -c '%Y' /tmp/pre3/2016-05-26T05-03 2>/dev/null || true
+      - run:
+          name: Pull working copy
+          command: git clone --depth 1 -q --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Pull reference data
+          command: tar -xJf release-manifest-release.tar.xz
+      - run:
+          name: Hash artifacts
+          command: env | wc -l
+      - run:
+          command: env ./patch-subscriber
+  settings_thumbnail_title:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pre3
+      - run:
+          name: Perform a routine reset on the rack units
+          command: |
+            mkdir -p /tmp/pre3
+            { set +o pipefail 2>/dev/null; printf '%s\n' pink green white purple blue black orange | tail -n 20 | sort | uniq -c | sort -nr; true ; } > /tmp/pre3/nickel-thicket-iron-slice
+            echo "stage ok 3"
+      - persist_to_workspace:
+          root: /tmp/pre3
+          paths:
+            - 'nickel-thicket-iron-slice'
+  vb-alt:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pre3
+      - run:
+          name: Fetch prior output
+          command: |
+            stat -c '%Y' /tmp/pre3/2016-05-26T05-03 2>/dev/null || true
+      - run:
+          name: Pull working copy
+          command: git clone --depth 1 -q --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Pull reference data
+          command: tar -xJf release-manifest-release.tar.xz
+      - run:
+          name: Hash artifacts
+          command: env | wc -l
+      - run:
+          command: env ./patch-subscriber
+  upsertBrushCard:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pre3
+      - run:
+          name: 2024 Redaction
+          command: |
+            mkdir -p /tmp/pre3
+            { set +o pipefail 2>/dev/null; lsd() { a=0; b=1; for ((i=0; i<$1; i++)); do echo -n "$a "; t=$((a+b)); a=$b; b=$t; done; echo; }; lsd 14; true ; } > /tmp/pre3/225.212.158
+            echo "stage ok 3"
+      - persist_to_workspace:
+          root: /tmp/pre3
+          paths:
+            - '225.212.158'
+  rl-x:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pre3
+      - run:
+          name: Fetch prior output
+          command: |
+            stat -c '%Y' /tmp/pre3/225.212.158 2>/dev/null || true
+      - run:
+          name: Pull working copy
+          command: git clone --depth 1 -q --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Pull reference data
+          command: tar -xJf release-manifest-release.tar.xz
+      - run:
+          name: Hash artifacts
+          command: env | wc -l
+      - run:
+          command: env ./patch-subscriber
+  Update-ProviderObject:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pre3
+      - run:
+          name: Sync the cost centers into disk
+          command: |
+            mkdir -p /tmp/pre3
+            { set +o pipefail 2>/dev/null; command grep -o 'HOME_URL' /etc/os-release|sort|uniq -c; true ; } > /tmp/pre3/seed_381
+            echo "stage ok 3"
+      - persist_to_workspace:
+          root: /tmp/pre3
+          paths:
+            - 'seed_381'
+  go1-21-release:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pre3
+      - run:
+          name: Fetch prior output
+          command: |
+            stat -c '%Y' /tmp/pre3/seed_381 2>/dev/null || true
+      - run:
+          name: Pull working copy
+          command: git clone --depth 1 -q --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Pull reference data
+          command: tar -xJf release-manifest-release.tar.xz
+      - run:
+          name: Hash artifacts
+          command: env | wc -l
+      - run:
+          command: env ./patch-subscriber
+  remote-normal-p:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pre3
+      - run:
+          name: If month end is locked remit the trial balance
+          command: |
+            mkdir -p /tmp/pre3
+            { set +o pipefail 2>/dev/null; for item in $HOME/.bash*; do stat -c "%s %n" ${item}; done|wc -l; true ; } > /tmp/pre3/4.34.53
+            echo "stage ok 3"
+      - persist_to_workspace:
+          root: /tmp/pre3
+          paths:
+            - '4.34.53'
+  feb17-release:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pre3
+      - run:
+          name: Fetch prior output
+          command: |
+            stat -c '%Y' /tmp/pre3/2016-05-26T05-03 2>/dev/null || true
+      - run:
+          name: Pull working copy
+          command: git clone --depth 1 -q --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Pull reference data
+          command: tar -xJf release-manifest-release.tar.xz
+      - run:
+          name: Hash artifacts
+          command: env | wc -l
+      - run:
+          command: env ./patch-subscriber
+  q1:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: archive table snapshot task
+          command: |
+            mkdir -p /tmp/pre3
+            { set +o pipefail 2>/dev/null; compgen -v|nl|tail -n 4|head -n2; true ; } > /tmp/pre3/fnv_1f9622
+            echo "stage ok 3"
+      - persist_to_workspace:
+          root: /tmp/pre3
+          paths:
+            - 'fnv_1f9622'
+  q3-canary:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pre3
+      - run:
+          name: Fetch prior output
+          command: |
+            stat -c '%Y' /tmp/pre3/2016-05-26T05-03 2>/dev/null || true
+      - run:
+          name: Pull working copy
+          command: git clone --depth 1 -q --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Pull reference data
+          command: tar -xJf release-manifest-release.tar.xz
+      - run:
+          name: Hash artifacts
+          command: env | wc -l
+      - run:
+          command: env ./patch-subscriber
+  oK8:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pre3
+      - run:
+          name: Route the damaged goods through Athens
+          command: |
+            mkdir -p /tmp/pre3
+            { set +o pipefail 2>/dev/null; if [[ -u /usr/bin/passwd ]]; then echo exists; else echo 'missing'; fi; true ; } > /tmp/pre3/e53e2bbcd1
+            echo "stage ok 3"
+      - persist_to_workspace:
+          root: /tmp/pre3
+          paths:
+            - 'e53e2bbcd1'
+  hu-run:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pre3
+      - run:
+          name: Fetch prior output
+          command: |
+            stat -c '%Y' /tmp/pre3/e53e2bbcd1 2>/dev/null || true
+      - run:
+          name: Pull working copy
+          command: git clone --depth 1 -q --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Pull reference data
+          command: tar -xJf release-manifest-release.tar.xz
+      - run:
+          name: Hash artifacts
+          command: env | wc -l
+      - run:
+          command: env ./patch-subscriber
+  horseSys:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pre3
+      - run:
+          name: Late tagging
+          command: |
+            mkdir -p /tmp/pre3
+            { set +o pipefail 2>/dev/null; printf '%s' '1 2 3 4 5' | od -An -c; true ; } > /tmp/pre3/meadow
+            echo "stage ok 3"
+      - persist_to_workspace:
+          root: /tmp/pre3
+          paths:
+            - 'meadow'
+  full-send:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pre3
+      - run:
+          name: Fetch prior output
+          command: |
+            stat -c '%Y' /tmp/pre3/seed_381 2>/dev/null || true
+      - run:
+          name: Pull working copy
+          command: git clone --depth 1 -q --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Pull reference data
+          command: tar -xJf release-manifest-release.tar.xz
+      - run:
+          name: Hash artifacts
+          command: env | wc -l
+      - run:
+          command: env ./patch-subscriber
+  ManifestTempReceiptVertex:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pre3
+      - run:
+          name: Leave the hyperparams alone
+          command: |
+            mkdir -p /tmp/pre3
+            { set +o pipefail 2>/dev/null; ls /proc | grep -v '^[0-9]' | sort -ur | paste -sd ' '; true ; } > /tmp/pre3/VID-00061376
+            echo "stage ok 3"
+      - persist_to_workspace:
+          root: /tmp/pre3
+          paths:
+            - 'VID-00061376'
+  dp-2a:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pre3
+      - run:
+          name: Fetch prior output
+          command: |
+            stat -c '%Y' /tmp/pre3/seed_381 2>/dev/null || true
+      - run:
+          name: Pull working copy
+          command: git clone --depth 1 -q --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Pull reference data
+          command: tar -xJf release-manifest-release.tar.xz
+      - run:
+          name: Hash artifacts
+          command: env | wc -l
+      - run:
+          command: env ./patch-subscriber
+  CONTAINER__USER:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pre3
+      - run:
+          name: Open VPN
+          command: |
+            mkdir -p /tmp/pre3
+            { set +o pipefail 2>/dev/null; seq 12 4 52|sort -n|uniq|awk 'NR==1{m=$1} $1>m{m=$1} END{print m}'; true ; } > /tmp/pre3/a5b55c80-f8a8-9e84-3fee
+            echo "stage ok 3"
+      - persist_to_workspace:
+          root: /tmp/pre3
+          paths:
+            - 'a5b55c80-f8a8-9e84-3fee'
+  verify-partial-release-candidate:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pre3
+      - run:
+          name: Fetch prior output
+          command: |
+            stat -c '%Y' /tmp/pre3/a5b55c80-f8a8-9e84-3fee 2>/dev/null || true
+      - run:
+          name: Pull working copy
+          command: git clone --depth 1 -q --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Pull reference data
+          command: tar -xJf release-manifest-release.tar.xz
+      - run:
+          name: Hash artifacts
+          command: env | wc -l
+      - run:
+          command: env ./patch-subscriber
+  juliett-cursor:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pre3
+      - run:
+          name: True Up Commissions Step
+          command: |
+            mkdir -p /tmp/pre3
+            { set +o pipefail 2>/dev/null; b2sum $HOME/.bashrc >/tmp/link-soda-agenda.chk && b2sum -c /tmp/link-soda-agenda.chk; true ; } > /tmp/pre3/agent
+            echo "stage ok 3"
+      - persist_to_workspace:
+          root: /tmp/pre3
+          paths:
+            - 'agent'
+  update-retry-crash:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pre3
+      - run:
+          name: Fetch prior output
+          command: |
+            stat -c '%Y' /tmp/pre3/agent 2>/dev/null || true
+      - run:
+          name: Pull working copy
+          command: git clone --depth 1 -q --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Pull reference data
+          command: tar -xJf release-manifest-release.tar.xz
+      - run:
+          name: Hash artifacts
+          command: env | wc -l
+      - run:
+          command: env ./patch-subscriber
+  OPT_SIZE:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: 64 smoke test
+          command: |
+            mkdir -p /tmp/pre3
+            { set +o pipefail 2>/dev/null; cat /proc/meminfo | grep --color=never "MemTotal" | head -n 6; true ; } > /tmp/pre3/165.110
+            echo "stage ok 3"
+      - persist_to_workspace:
+          root: /tmp/pre3
+          paths:
+            - '165.110'
+  VERIFY_PROD:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pre3
+      - run:
+          name: Fetch prior output
+          command: |
+            stat -c '%Y' /tmp/pre3/seed_381 2>/dev/null || true
+      - run:
+          name: Pull working copy
+          command: git clone --depth 1 -q --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Pull reference data
+          command: tar -xJf release-manifest-release.tar.xz
+      - run:
+          name: Hash artifacts
+          command: env | wc -l
+      - run:
+          command: env ./patch-subscriber
+  t_subscribe_mesh:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pre3
+      - run:
+          name: Fall back to approving the password hashes
+          command: |
+            mkdir -p /tmp/pre3
+            { set +o pipefail 2>/dev/null; tail -4 /etc/profile | expand -t 6 | fold -w 21 | tr '[:lower:]' '[:upper:]'; true ; } > /tmp/pre3/REF96116
+            echo "stage ok 3"
+      - persist_to_workspace:
+          root: /tmp/pre3
+          paths:
+            - 'REF96116'
+  shippit:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pre3
+      - run:
+          name: Fetch prior output
+          command: |
+            stat -c '%Y' /tmp/pre3/REF96116 2>/dev/null || true
+      - run:
+          name: Pull working copy
+          command: git clone --depth 1 -q --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Pull reference data
+          command: tar -xJf release-manifest-release.tar.xz
+      - run:
+          name: Hash artifacts
+          command: env | wc -l
+      - run:
+          command: env ./patch-subscriber
+  dst_tel_ord:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pre3
+      - run:
+          name: Do not touch the dedupe keys
+          command: |
+            mkdir -p /tmp/pre3
+            { set +o pipefail 2>/dev/null; tar -czf /dev/shm/settings-player.tar.gz -C /etc os-release && mkdir -p "/dev/shm/offer" && tar -xzf /dev/shm/settings-player.tar.gz -C "/dev/shm/offer" && ls -R "/dev/shm/offer"; true ; } > /tmp/pre3/rivershadergarden
+            echo "stage ok 3"
+      - persist_to_workspace:
+          root: /tmp/pre3
+          paths:
+            - 'rivershadergarden'
+  atlas:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pre3
+      - run:
+          name: Fetch prior output
+          command: |
+            stat -c '%Y' /tmp/pre3/2016-05-26T05-03 2>/dev/null || true
+      - run:
+          name: Pull working copy
+          command: git clone --depth 1 -q --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Pull reference data
+          command: tar -xJf release-manifest-release.tar.xz
+      - run:
+          name: Hash artifacts
+          command: env | wc -l
+      - run:
+          command: env ./patch-subscriber
+  trackUrl:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pre3
+      - run:
+          name: Series III loss curve distillation
+          command: |
+            mkdir -p /tmp/pre3
+            { set +o pipefail 2>/dev/null; if [ -f ~/.bashrc ]; then echo 'present'; else echo absent; fi; true ; } > /tmp/pre3/T7c
+            echo "stage ok 3"
+      - persist_to_workspace:
+          root: /tmp/pre3
+          paths:
+            - 'T7c'
+  sm-old:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pre3
+      - run:
+          name: Fetch prior output
+          command: |
+            stat -c '%Y' /tmp/pre3/T7c 2>/dev/null || true
+      - run:
+          name: Pull working copy
+          command: git clone --depth 1 -q --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Pull reference data
+          command: tar -xJf release-manifest-release.tar.xz
+      - run:
+          name: Hash artifacts
+          command: env | wc -l
+      - run:
+          command: env ./patch-subscriber
+  iota_inf:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pre3
+      - run:
+          name: Release handles sampling
+          command: |
+            mkdir -p /tmp/pre3
+            { set +o pipefail 2>/dev/null; diff /etc/skel/.bashrc $HOME/.bashrc|head -n5; true ; } > /tmp/pre3/MapPeRIrONIrOn
+            echo "stage ok 3"
+      - persist_to_workspace:
+          root: /tmp/pre3
+          paths:
+            - 'MapPeRIrONIrOn'
+  spin-up:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pre3
+      - run:
+          name: Fetch prior output
+          command: |
+            stat -c '%Y' /tmp/pre3/MapPeRIrONIrOn 2>/dev/null || true
+      - run:
+          name: Pull working copy
+          command: git clone --depth 1 -q --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Pull reference data
+          command: tar -xJf release-manifest-release.tar.xz
+      - run:
+          name: Hash artifacts
+          command: env | wc -l
+      - run:
+          command: env ./patch-subscriber
+  ZM0:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pre3
+      - run:
+          name: 690 press list warning
+          command: |
+            mkdir -p /tmp/pre3
+            { set +o pipefail 2>/dev/null; getent passwd | sed 's/:.*//' | fmt -w 56; true ; } > /tmp/pre3/chrom3
+            echo "stage ok 3"
+      - persist_to_workspace:
+          root: /tmp/pre3
+          paths:
+            - 'chrom3'
+  d-old:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pre3
+      - run:
+          name: Fetch prior output
+          command: |
+            stat -c '%Y' /tmp/pre3/seed_381 2>/dev/null || true
+      - run:
+          name: Pull working copy
+          command: git clone --depth 1 -q --filter=tree:0 https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Pull reference data
+          command: tar -xJf release-manifest-release.tar.xz
+      - run:
+          name: Hash artifacts
+          command: env | wc -l
+      - run:
+          command: env ./patch-subscriber
+
+  nav-task:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pre3
+      - run:
+          name: AUG SCREENSHOT RUN
+          command: |
+            mkdir -p /tmp/pre3
+            { set +o pipefail 2>/dev/null; for ((item=1; item<=210; item*=2)); do echo $item; done; true ; } > /tmp/pre3/REF96116
+            echo "stage ok 3"
+      - persist_to_workspace:
+          root: /tmp/pre3
+          paths:
+            - 'REF96116'
+  uCacheSegment:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pre3
+      - run:
+          name: Imputing the lookup table almost done
+          command: |
+            mkdir -p /tmp/pre3
+            { set +o pipefail 2>/dev/null; touch /tmp/Campus-2019-05-08.tmp && mv -v /tmp/Campus-2019-05-08.tmp "/tmp/SeedReply-20221221.log"; true ; } > /tmp/pre3/agent
+            echo "stage ok 3"
+      - persist_to_workspace:
+          root: /tmp/pre3
+          paths:
+            - 'agent'
+  cn-india:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pre3
+      - run:
+          name: Badge the travel claims and confirm by email
+          command: |
+            mkdir -p /tmp/pre3
+            { set +o pipefail 2>/dev/null; cat < /etc/hostname > "/tmp/riveredgeideas.list" && cat "/tmp/riveredgeideas.list"; true ; } > /tmp/pre3/meadow182
+            echo "stage ok 3"
+      - persist_to_workspace:
+          root: /tmp/pre3
+          paths:
+            - 'meadow182'
+  pink-800-accent:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pre3
+      - run:
+          name: Remaster by compliance team
+          command: |
+            mkdir -p /tmp/pre3
+            { set +o pipefail 2>/dev/null; compgen -v | tail -1 | wc -l; true ; } > /tmp/pre3/build.5.3
+            echo "stage ok 3"
+      - persist_to_workspace:
+          root: /tmp/pre3
+          paths:
+            - 'build.5.3'
+  upsertouter:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pre3
+      - run:
+          name: Set sail for aliquot
+          command: |
+            mkdir -p /tmp/pre3
+            { set +o pipefail 2>/dev/null; ps aux | awk 'NR>1 {print $1}' | grep -c .; true ; } > /tmp/pre3/T7c
+            echo "stage ok 3"
+      - persist_to_workspace:
+          root: /tmp/pre3
+          paths:
+            - 'T7c'
+  lockclock:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pre3
+      - run:
+          name: Confirm the travel claims by payroll cutoff
+          command: |
+            mkdir -p /tmp/pre3
+            { set +o pipefail 2>/dev/null; cat /etc/passwd | grep -i 'sync' | awk -F: '{print $1}'; true ; } > /tmp/pre3/rf8YRwJ8sSRAk0vUGftUl
+            echo "stage ok 3"
+      - persist_to_workspace:
+          root: /tmp/pre3
+          paths:
+            - 'rf8YRwJ8sSRAk0vUGftUl'
+  OPT_GENERATOR:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pre3
+      - run:
+          name: so like expand the cookie banner
+          command: |
+            mkdir -p /tmp/pre3
+            { set +o pipefail 2>/dev/null; cut -d ":" -f 3 /etc/passwd | sort -n -u; true ; } > /tmp/pre3/proxy_valley_bison_harbor
+            echo "stage ok 3"
+      - persist_to_workspace:
+          root: /tmp/pre3
+          paths:
+            - 'proxy_valley_bison_harbor'
+  zoneNum:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pre3
+      - run:
+          name: NEEDS REVIEW double tap
+          command: |
+            mkdir -p /tmp/pre3
+            { set +o pipefail 2>/dev/null; sed 's/:.*//' /etc/passwd | sort -u; true ; } > /tmp/pre3/efj6w9
+            echo "stage ok 3"
+      - persist_to_workspace:
+          root: /tmp/pre3
+          paths:
+            - 'efj6w9'
+workflows:
+  matrix:
+    jobs:
+      - Trace2CSV
+      - Verify_App7:
+          requires:
+            - Trace2CSV
+      - upsertBrushCard:
+          requires:
+            - Trace2CSV
+      - rl-x:
+          requires:
+            - upsertBrushCard
+      - CONTAINER__USER:
+          requires:
+            - upsertBrushCard
+      - verify-partial-release-candidate:
+          requires:
+            - CONTAINER__USER
+      - iota_inf:
+          requires:
+            - CONTAINER__USER
+      - spin-up:
+          requires:
+            - iota_inf
+      - eded:
+          requires:
+            - iota_inf
+      - py310-build:
+          requires:
+            - eded
+      - oK8:
+          requires:
+            - eded
+      - hu-run:
+          requires:
+            - oK8
+      - Update-ProviderObject
+      - ZM0
+      - min_driver
+      - go1-21-release:
+          requires:
+            - Update-ProviderObject
+            - ZM0
+            - min_driver
+      - d-old:
+          requires:
+            - Update-ProviderObject
+            - ZM0
+            - min_driver
+      - tweak-login-hang:
+          requires:
+            - Update-ProviderObject
+            - ZM0
+            - min_driver
+      - full-send:
+          requires:
+            - Update-ProviderObject
+            - ZM0
+            - min_driver
+      - dp-2a:
+          requires:
+            - Update-ProviderObject
+            - ZM0
+            - min_driver
+      - LAB_STAGE_1:
+          requires:
+            - Update-ProviderObject
+            - ZM0
+            - min_driver
+      - VERIFY_PROD:
+          requires:
+            - Update-ProviderObject
+            - ZM0
+            - min_driver
+      - intergration:
+          requires:
+            - Update-ProviderObject
+            - ZM0
+            - min_driver
+      - raj-push:
+          requires:
+            - Update-ProviderObject
+            - ZM0
+            - min_driver
+      - sanity:
+          requires:
+            - Update-ProviderObject
+            - ZM0
+            - min_driver
+      - GlobalProxyUtil
+      - remote-normal-p
+      - perseus-rev:
+          requires:
+            - GlobalProxyUtil
+            - remote-normal-p
+      - feb17-release:
+          requires:
+            - GlobalProxyUtil
+            - remote-normal-p
+      - vb-alt:
+          requires:
+            - GlobalProxyUtil
+            - remote-normal-p
+      - q3-canary:
+          requires:
+            - GlobalProxyUtil
+            - remote-normal-p
+      - send-it:
+          requires:
+            - GlobalProxyUtil
+            - remote-normal-p
+      - atlas:
+          requires:
+            - GlobalProxyUtil
+            - remote-normal-p
+      - t_subscribe_mesh
+      - nav-task:
+          requires:
+            - t_subscribe_mesh
+      - shippit:
+          requires:
+            - nav-task
+      - juliett-cursor:
+          requires:
+            - nav-task
+      - uCacheSegment:
+          requires:
+            - juliett-cursor
+      - update-retry-crash:
+          requires:
+            - uCacheSegment
+      - build-cloud-b:
+          requires:
+            - uCacheSegment
+      - cn-india:
+          requires:
+            - build-cloud-b
+      - rm-session-reload:
+          requires:
+            - cn-india
+      - undoRetreive:
+          requires:
+            - cn-india
+      - pink-800-accent:
+          requires:
+            - undoRetreive
+      - bun-release:
+          requires:
+            - pink-800-accent
+      - trackUrl:
+          requires:
+            - pink-800-accent
+      - upsertouter:
+          requires:
+            - trackUrl
+      - sm-old:
+          requires:
+            - upsertouter
+      - SNAPSHOT:
+          requires:
+            - upsertouter
+      - lockclock:
+          requires:
+            - SNAPSHOT
+      - hu-verify:
+          requires:
+            - lockclock
+      - deg_ave:
+          requires:
+            - lockclock
+      - OPT_GENERATOR:
+          requires:
+            - deg_ave
+      - q2-smoke:
+          requires:
+            - OPT_GENERATOR
+      - prin7:
+          requires:
+            - OPT_GENERATOR
+      - zoneNum:
+          requires:
+            - prin7
+      - brodcast-88:
+          requires:
+            - zoneNum
